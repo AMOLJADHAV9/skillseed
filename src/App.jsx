@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 import { PageLoader } from './components/application/loading-indicator/PageLoader';
