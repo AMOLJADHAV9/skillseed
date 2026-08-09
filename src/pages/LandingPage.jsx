@@ -4,13 +4,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SocialProofSection } from '../components/marketing/SocialProofSection';
 import { GrowthSection } from '../components/marketing/GrowthSection';
 import { HeroCarousel } from '../components/marketing/HeroCarousel';
+import { SkillSeedHero } from '../components/marketing/SkillSeedHero';
 import { KidsPhotoGallery } from '../components/marketing/KidsPhotoGallery';
+import { WhySkillSeedSection } from '../components/marketing/WhySkillSeedSection';
+import { PopularProgramsSection } from '../components/marketing/PopularProgramsSection';
+import { HowItWorksSection } from '../components/marketing/HowItWorksSection';
+import { ParentsTestimonialSection } from '../components/marketing/ParentsTestimonialSection';
 import { TestimonialV2 } from '../components/ui/testimonial-v2';
 import FaqSection from '@/components/ui/habit-faq-scroller';
-
-
-
-
 
 import {
   Check,
@@ -105,8 +106,6 @@ export const LandingPage = () => {
     },
   ];
 
-
-
   const faqs = [
     {
       q: 'What is the format of Learn2Read online classes?',
@@ -154,120 +153,8 @@ export const LandingPage = () => {
         </button>
       </div>
 
-      {/* ─── HERO SECTION ──────────────────────────────── */}
-      <section className="relative pt-8 pb-16 lg:pt-12 lg:pb-24 overflow-hidden">
-        {/* Ambient Glow Blobs */}
-        <div className="absolute -top-32 -right-32 w-[450px] h-[450px] bg-purple-200/40 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute bottom-0 -left-24 w-[400px] h-[400px] bg-pink-200/40 rounded-full blur-[140px] pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-
-            {/* LEFT: Text, Highlights & CTAs */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-6 space-y-6 text-left"
-            >
-              {/* Animated Live Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-md border border-purple-200/80 rounded-none shadow-sm">
-                <span className="flex h-2.5 w-2.5 relative">
-                  <span className="animate-ping absolute inline-flex h-full w-full bg-[#C04DF7] opacity-75" />
-                  <span className="relative inline-flex h-2.5 w-2.5 bg-[#C04DF7]" />
-                </span>
-                <span className="text-xs font-black text-[#C04DF7] tracking-wide">
-                  Interactive LIVE Classes for Ages 3–12
-                </span>
-                <span className="px-2.5 py-0.5 bg-purple-100 text-[10px] font-black text-purple-700 ml-1 rounded-none">
-                  ⭐ Top Rated
-                </span>
-              </div>
-
-              {/* Headline */}
-              <div>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
-                  Build Your Child's <br />
-                  <span className="gradient-text-purple italic pr-2">Reading & STEM</span> <br />
-                  Superpowers 🚀
-                </h1>
-              </div>
-
-              {/* Subtitle */}
-              <p className="text-sm sm:text-base font-semibold text-slate-600 max-w-lg leading-relaxed">
-                Unlock your child's reading fluency and cognitive growth with <span className="text-[#C04DF7] font-black">Learn2Read</span> — India's premier phonics & STEM academy trusted by parents across 35+ countries.
-              </p>
-
-              {/* 2x2 Feature Highlights Grid */}
-              <div className="grid grid-cols-2 gap-3 pt-1">
-                {[
-                  { icon: '🎯', title: 'Max 4:1 Batch Ratio', desc: 'Personalized attention' },
-                  { icon: '🏆', title: 'Gamified Badges', desc: 'Fun XP & rewards' },
-                  { icon: '📖', title: 'Phonics & Grammar', desc: 'Alphabet to fluency' },
-                  { icon: '🌍', title: '35+ Countries', desc: 'Global community' },
-                ].map((item) => (
-                  <div key={item.title} className="flex items-center gap-3 p-3 rounded-none bg-white/90 border border-slate-200/80 shadow-sm hover:shadow-md transition">
-                    <span className="text-2xl flex-shrink-0">{item.icon}</span>
-                    <div>
-                      <div className="text-xs font-black text-slate-900">{item.title}</div>
-                      <div className="text-[10px] text-slate-500 font-semibold">{item.desc}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* High-Converting CTA Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => setDemoModalOpen(true)}
-                  className="px-8 py-4 bg-[#22C55E] hover:bg-[#16a34a] text-white font-black text-sm rounded-none shadow-xl shadow-green-500/25 flex items-center gap-2.5 transition cursor-pointer"
-                >
-                  <div className="w-6 h-6 rounded-none bg-white/30 flex items-center justify-center">
-                    <Play className="w-3.5 h-3.5 fill-white text-white ml-0.5" />
-                  </div>
-                  Book Free Demo Class 🚀
-                </motion.button>
-
-                <Link to="/courses">
-                  <motion.button
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="px-7 py-4 bg-white border-2 border-purple-200 text-[#C04DF7] hover:bg-purple-50 font-black text-sm rounded-none shadow-sm flex items-center gap-2 transition cursor-pointer"
-                  >
-                    View All Courses <ArrowRight className="w-4 h-4" />
-                  </motion.button>
-                </Link>
-              </div>
-
-              {/* Country Badges */}
-              <div className="flex flex-wrap items-center gap-2 pt-1">
-                <span className="text-[11px] font-bold text-slate-400 mr-1">Trusted in:</span>
-                {countries.slice(0, 5).map((c) => (
-                  <span key={c} className="px-3 py-1 text-[10px] font-bold bg-white border border-slate-200 rounded-none text-slate-600 shadow-sm">
-                    {c}
-                  </span>
-                ))}
-                <span className="px-3 py-1 text-[10px] font-bold bg-white border border-slate-200 rounded-none text-slate-400">
-                  +30 more
-                </span>
-              </div>
-            </motion.div>
-
-            {/* RIGHT: Hero Carousel */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="lg:col-span-6 relative flex justify-center"
-            >
-              <HeroCarousel />
-            </motion.div>
-
-          </div>
-        </div>
-      </section>
+      {/* ─── SKILLSEED REDESIGNED HERO SECTION ──────────────────────── */}
+      <SkillSeedHero />
 
       {/* ─── KIDS PHOTO GALLERY GRID (NEW) ────────────── */}
       <KidsPhotoGallery />
@@ -282,138 +169,19 @@ export const LandingPage = () => {
       {/* ─── SOCIAL PROOF ──────────────────────────────── */}
       <SocialProofSection />
 
-      {/* ─── WHY LEARN2READ FEATURES ──────────────────── */}
-      <section className="py-20 md:py-28 bg-[#FAF5F8] relative overflow-hidden">
-        {/* Soft background ambient lighting */}
-        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute top-1/4 -left-40 w-96 h-96 bg-purple-200/30 rounded-full blur-[140px]" />
-          <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-pink-200/30 rounded-full blur-[140px]" />
-        </div>
+      {/* ─── WHY SKILLSEED FEATURES SECTION ────────────── */}
+      <WhySkillSeedSection />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16 space-y-3">
-            <span className="text-xs font-black text-[#C04DF7] uppercase tracking-widest block">
-              WHY SKILLSEED
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-              Everything Your Child Needs to Excel
-            </h2>
-            <p className="text-xs sm:text-sm md:text-base text-slate-500 font-semibold max-w-2xl mx-auto leading-relaxed">
-              A holistic, research-backed curriculum designed to build reading, language, and numeracy skills with joy.
-            </p>
-          </div>
+      {/* ─── FEATURED COURSES (OUR POPULAR PROGRAMS) ─────────────── */}
+      <PopularProgramsSection />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07, duration: 0.4 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="bg-white rounded-none p-7 border border-slate-200 shadow-sm hover:shadow-md transition-all flex items-start gap-4"
-              >
-                {f.icon}
-                <div>
-                  <h3 className="text-base font-black text-slate-900 mb-1 leading-snug">{f.title}</h3>
-                  <p className="text-xs text-slate-500 font-semibold leading-relaxed">{f.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ─── HOW IT WORKS SECTION ─────────────────────────────── */}
+      <HowItWorksSection onBookDemo={() => setDemoModalOpen(true)} />
 
-      {/* ─── FEATURED COURSES ─────────────────────────── */}
-      <section className="py-20 bg-white border-t border-pink-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12 gap-4">
-            <div className="space-y-2">
-              <span className="text-xs font-black text-[#C04DF7] uppercase tracking-widest">
-                OUR POPULAR PROGRAMS
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-900">
-                Interactive Phonics &amp; STEM Classes
-              </h2>
-              <p className="text-sm text-slate-600 font-semibold">
-                Designed to build reading fluency, creative problem-solving, and confidence.
-              </p>
-            </div>
-            <Link to="/courses">
-              <button className="flex-shrink-0 px-5 py-2.5 border-2 border-[#C04DF7] text-[#C04DF7] font-black text-sm rounded-none hover:bg-purple-50 transition flex items-center gap-2 cursor-pointer">
-                View All Courses <ArrowRight className="w-4 h-4" />
-              </button>
-            </Link>
-          </div>
+      {/* ─── PARENTS TESTIMONIAL SECTION (VOICES OF LEARN2READ PARENTS) ─ */}
+      <ParentsTestimonialSection />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-            {MOCK_COURSES.slice(0, 3).map((course) => (
-              <CourseCard key={course.id} course={course} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── HOW IT WORKS ─────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-br from-[#FAF5F8] to-purple-50 border-t border-pink-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 space-y-3">
-            <span className="text-xs font-black text-[#C04DF7] uppercase tracking-widest">
-              HOW IT WORKS
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900">
-              Start Learning in 3 Easy Steps
-            </h2>
-          </div>
-
-          <div className="relative max-w-4xl mx-auto">
-            {/* Connecting dashed line in background */}
-            <div className="hidden md:block absolute top-12 left-[15%] right-[15%] border-t-2 border-dashed border-purple-200 z-0" />
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 relative z-10">
-              {[
-                { step: '01', icon: CalendarHeart, title: 'Book a Free Demo', desc: 'Talk to our counsellor and book a no-obligation free trial class for your child.' },
-                { step: '02', icon: ClipboardCheck, title: 'Get Assessed', desc: 'Our educators assess your child\'s current level and recommend the perfect course.' },
-                { step: '03', icon: Rocket, title: 'Start Learning!', desc: 'Your child joins live interactive sessions and starts their reading journey immediately.' },
-              ].map((item, idx) => (
-                <motion.div
-                  key={item.step}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.15 }}
-                  className="relative z-10 flex flex-col items-center text-center space-y-6 group"
-                >
-                  <div className="relative">
-                    <div className="w-24 h-24 rounded-none bg-white border-2 border-purple-200 shadow-md flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-[#C04DF7]">
-                      <item.icon className="w-10 h-10 text-[#C04DF7] group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
-                    </div>
-                    <div className="absolute -top-3 -right-3 w-9 h-9 rounded-none bg-[#C04DF7] text-white text-xs font-black flex items-center justify-center shadow-md border-2 border-white">
-                      {item.step}
-                    </div>
-                  </div>
-                  <div className="space-y-2.5 px-2">
-                    <h3 className="text-xl font-black text-slate-900 group-hover:text-[#C04DF7] transition-colors">{item.title}</h3>
-                    <p className="text-xs text-slate-600 font-semibold leading-relaxed">{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
-            <button
-              onClick={() => setDemoModalOpen(true)}
-              className="px-8 py-4 bg-[#C04DF7] hover:bg-[#b03de5] text-white font-black text-xs sm:text-sm rounded-none shadow-lg transition cursor-pointer"
-            >
-              Book Your Free Demo Now 🎁
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── TESTIMONIALS ─────────────────────────────── */}
+      {/* ─── TESTIMONIALS SCROLLER ─────────────────────── */}
       <TestimonialV2 />
 
       {/* ─── FAQ SECTION ──────────────────────────────── */}

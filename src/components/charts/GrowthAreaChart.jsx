@@ -1,148 +1,175 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Area,
   AreaChart,
   CartesianGrid,
-  Legend,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from 'recharts';
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
+// Data matching the growth trajectory in the user's reference mockup
 const lineData = [
-  { date: new Date(2026, 0, 1), students: 600, courses: 40, countries: 18 },
-  { date: new Date(2026, 1, 1), students: 620, courses: 42, countries: 20 },
-  { date: new Date(2026, 2, 1), students: 680, courses: 45, countries: 22 },
-  { date: new Date(2026, 3, 1), students: 720, courses: 48, countries: 24 },
-  { date: new Date(2026, 4, 1), students: 750, courses: 50, countries: 26 },
-  { date: new Date(2026, 5, 1), students: 810, courses: 54, countries: 28 },
-  { date: new Date(2026, 6, 1), students: 870, courses: 56, countries: 30 },
-  { date: new Date(2026, 7, 1), students: 960, courses: 60, countries: 32 },
-  { date: new Date(2026, 8, 1), students: 1050, courses: 65, countries: 34 },
-  { date: new Date(2026, 9, 1), students: 1180, courses: 70, countries: 35 },
-  { date: new Date(2026, 10, 1), students: 1320, courses: 74, countries: 36 },
-  { date: new Date(2026, 11, 1), students: 1480, courses: 78, countries: 38 },
+  { month: 'Jan', students: 300, courses: 90, countries: 15 },
+  { month: 'Feb', students: 400, courses: 110, countries: 18 },
+  { month: 'Mar', students: 500, courses: 130, countries: 22 },
+  { month: 'Apr', students: 600, courses: 145, countries: 25 },
+  { month: 'May', students: 700, courses: 160, countries: 28 },
+  { month: 'Jun', students: 800, courses: 175, countries: 30 },
+  { month: 'Jul', students: 890, courses: 190, countries: 35 },
+  { month: 'Aug', students: 1010, courses: 210, countries: 40 },
+  { month: 'Sep', students: 1120, courses: 230, countries: 45 },
+  { month: 'Oct', students: 1220, courses: 250, countries: 50 },
+  { month: 'Nov', students: 1310, courses: 280, countries: 55 },
+  { month: 'Dec', students: 1400, courses: 310, countries: 60 },
 ];
 
-// ─── Custom Tooltip ────────────────────────────────────────────────────────────
+// Custom Tooltip
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
 
-  const month =
-    label instanceof Date
-      ? label.toLocaleDateString(undefined, { month: 'short', year: 'numeric' })
-      : label;
-
   return (
-    <div className="glass-card rounded-2xl px-4 py-3 text-xs shadow-xl border border-purple-100 min-w-[160px]">
-      <p className="font-black text-slate-800 mb-2">{month}</p>
+    <div className="bg-white/95 backdrop-blur-md rounded-2xl px-4 py-3 text-xs shadow-2xl border border-slate-100 min-w-[170px] z-50">
+      <p className="font-black text-slate-900 mb-2 border-b border-slate-100 pb-1.5">{label} Milestone</p>
       {payload.map((entry) => (
         <div key={entry.dataKey} className="flex items-center justify-between gap-4 py-0.5">
-          <span className="flex items-center gap-1.5 font-semibold text-slate-600">
+          <span className="flex items-center gap-1.5 font-bold text-slate-600">
             <span
               className="w-2.5 h-2.5 rounded-full inline-block"
               style={{ backgroundColor: entry.color }}
             />
             {entry.name}
           </span>
-          <span className="font-black text-slate-900">{Number(entry.value).toLocaleString()}</span>
+          <span className="font-black text-slate-900">
+            {entry.dataKey === 'students' ? `${(entry.value / 1000).toFixed(1)}K` : entry.value}
+          </span>
         </div>
       ))}
     </div>
   );
 };
 
-// ─── Custom Legend ─────────────────────────────────────────────────────────────
-const CustomLegend = ({ payload }) => (
-  <div className="flex flex-wrap justify-center gap-4 text-xs font-bold text-slate-600 pt-2">
-    {payload?.map((entry) => (
-      <span key={entry.value} className="flex items-center gap-1.5">
-        <span
-          className="w-3 h-3 rounded-full inline-block"
-          style={{ backgroundColor: entry.color }}
-        />
-        {entry.value}
-      </span>
-    ))}
-  </div>
-);
-
-// ─── Main Chart Component ──────────────────────────────────────────────────────
 export const GrowthAreaChart = () => {
-  const [hiddenSeries, setHiddenSeries] = useState({});
-
-  const toggleSeries = (key) =>
-    setHiddenSeries((prev) => ({ ...prev, [key]: !prev[key] }));
-
-  const SERIES = [
-    { key: 'students', name: 'Students', color: '#C04DF7', gradient: 'gradStudents' },
-    { key: 'courses',  name: 'Courses',  color: '#22C55E', gradient: 'gradCourses' },
-    { key: 'countries',name: 'Countries',color: '#F59E0B', gradient: 'gradCountries' },
-  ];
-
   return (
-    <div style={{ width: '100%', height: 280 }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <AreaChart
-          data={lineData}
-          margin={{ top: 10, right: 10, bottom: 0, left: -10 }}
-        >
-          <defs>
-            {SERIES.map(({ key, color, gradient }) => (
-              <linearGradient key={gradient} id={gradient} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%"  stopColor={color} stopOpacity={0.3} />
-                <stop offset="95%" stopColor={color} stopOpacity={0} />
+    <div className="w-full space-y-4">
+      
+      {/* Chart Wrapper Container with End Pill Labels */}
+      <div className="relative w-full h-[320px] pt-4">
+        
+        {/* End Badge Pills on right side matching reference mockup */}
+        <div className="absolute right-0 top-[18%] sm:right-2 z-20 hidden sm:flex flex-col items-end gap-1 pointer-events-none">
+          <span className="px-2.5 py-1 rounded-full bg-[#7C3AED] text-white font-black text-xs shadow-md">
+            1.4K
+          </span>
+        </div>
+
+        <div className="absolute right-0 top-[62%] sm:right-2 z-20 hidden sm:flex flex-col items-end gap-1 pointer-events-none">
+          <span className="px-2.5 py-1 rounded-full bg-[#10B981] text-white font-black text-xs shadow-md">
+            180
+          </span>
+        </div>
+
+        <div className="absolute right-0 top-[78%] sm:right-2 z-20 hidden sm:flex flex-col items-end gap-1 pointer-events-none">
+          <span className="px-2.5 py-1 rounded-full bg-[#F97316] text-white font-black text-xs shadow-md">
+            60
+          </span>
+        </div>
+
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart data={lineData} margin={{ top: 15, right: 45, bottom: 0, left: 0 }}>
+            <defs>
+              <linearGradient id="purpleGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#7C3AED" stopOpacity={0.35} />
+                <stop offset="95%" stopColor="#7C3AED" stopOpacity={0.02} />
               </linearGradient>
-            ))}
-          </defs>
+              <linearGradient id="greenGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#10B981" stopOpacity={0.15} />
+                <stop offset="95%" stopColor="#10B981" stopOpacity={0.0} />
+              </linearGradient>
+            </defs>
 
-          <CartesianGrid
-            vertical={false}
-            stroke="rgba(148,163,184,0.15)"
-            strokeDasharray="4 4"
-          />
-
-          <XAxis
-            dataKey="date"
-            axisLine={false}
-            tickLine={false}
-            tick={{ fontSize: 11, fill: '#94a3b8', fontWeight: 700 }}
-            tickFormatter={(v) =>
-              v instanceof Date
-                ? v.toLocaleDateString(undefined, { month: 'short' })
-                : v
-            }
-            padding={{ left: 10, right: 10 }}
-          />
-
-          <YAxis
-            axisLine={false}
-            tickLine={false}
-            tick={{ fontSize: 11, fill: '#94a3b8', fontWeight: 700 }}
-            tickFormatter={(v) => (v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v)}
-          />
-
-          <Tooltip content={<CustomTooltip />} />
-          <Legend content={<CustomLegend />} />
-
-          {SERIES.map(({ key, name, color, gradient }) => (
-            <Area
-              key={key}
-              dataKey={key}
-              name={name}
-              type="monotone"
-              stroke={color}
-              strokeWidth={2.5}
-              fill={`url(#${gradient})`}
-              dot={false}
-              activeDot={{ r: 5, stroke: color, strokeWidth: 2, fill: '#fff' }}
-              hide={!!hiddenSeries[key]}
+            <CartesianGrid
+              vertical={false}
+              stroke="#E2E8F0"
+              strokeDasharray="4 4"
             />
-          ))}
-        </AreaChart>
-      </ResponsiveContainer>
+
+            <XAxis
+              dataKey="month"
+              axisLine={false}
+              tickLine={false}
+              tick={{ fontSize: 12, fill: '#64748B', fontWeight: 700 }}
+              padding={{ left: 10, right: 10 }}
+            />
+
+            <YAxis
+              axisLine={false}
+              tickLine={false}
+              ticks={[0, 300, 600, 900, 1200, 1500]}
+              tick={{ fontSize: 12, fill: '#64748B', fontWeight: 700 }}
+              tickFormatter={(v) => (v >= 1000 ? `${(v / 1000).toFixed(1)}K` : v)}
+            />
+
+            <Tooltip content={<CustomTooltip />} />
+
+            {/* Area / Line 1: Students (Purple) */}
+            <Area
+              dataKey="students"
+              name="Students"
+              type="monotone"
+              stroke="#7C3AED"
+              strokeWidth={3}
+              fill="url(#purpleGrad)"
+              dot={{ r: 4, fill: '#7C3AED', strokeWidth: 2, stroke: '#FFFFFF' }}
+              activeDot={{ r: 7, fill: '#7C3AED', strokeWidth: 3, stroke: '#FFFFFF' }}
+            />
+
+            {/* Area / Line 2: Courses (Green) */}
+            <Area
+              dataKey="courses"
+              name="Courses"
+              type="monotone"
+              stroke="#10B981"
+              strokeWidth={2.5}
+              fill="url(#greenGrad)"
+              dot={{ r: 4, fill: '#10B981', strokeWidth: 2, stroke: '#FFFFFF' }}
+              activeDot={{ r: 6, fill: '#10B981', strokeWidth: 2, stroke: '#FFFFFF' }}
+            />
+
+            {/* Area / Line 3: Countries (Orange) */}
+            <Area
+              dataKey="countries"
+              name="Countries"
+              type="monotone"
+              stroke="#F97316"
+              strokeWidth={2.5}
+              fill="none"
+              dot={{ r: 4, fill: '#F97316', strokeWidth: 2, stroke: '#FFFFFF' }}
+              activeDot={{ r: 6, fill: '#F97316', strokeWidth: 2, stroke: '#FFFFFF' }}
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* Custom Legend Centered at Bottom */}
+      <div className="flex flex-wrap justify-center items-center gap-6 text-xs sm:text-sm font-bold text-slate-700 pt-2">
+        <div className="flex items-center gap-2">
+          <span className="w-3 h-3 rounded-full bg-[#7C3AED] shadow-sm inline-block" />
+          <span>Students</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-3 h-3 rounded-full bg-[#10B981] shadow-sm inline-block" />
+          <span>Courses</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-3 h-3 rounded-full bg-[#F97316] shadow-sm inline-block" />
+          <span>Countries</span>
+        </div>
+      </div>
+
     </div>
   );
 };
+
+export default GrowthAreaChart;

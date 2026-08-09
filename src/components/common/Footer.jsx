@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Heart } from 'lucide-react';
+import { SkillSeedLogo } from './SkillSeedLogo';
+import { SplashButton } from './SplashButton';
 import {
   GooglePlayButton,
   AppStoreButton,
+  GalaxyStoreButton,
 } from '../base/buttons/AppStoreButtons';
 
 const FacebookIcon = () => (
@@ -28,24 +31,28 @@ export const Footer = () => {
   return (
     <footer className="relative bg-white pt-16 pb-8 overflow-hidden border-t-2 border-purple-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Footer Top CTA Banner with SplashButton */}
+        <div className="mb-12 p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden border border-purple-800/40">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 text-center md:text-left space-y-2">
+            <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
+              Ready to Boost Your Child's Learning?
+            </h3>
+            <p className="text-purple-200 text-sm font-semibold max-w-md">
+              Join over 50,000+ happy young explorers mastering Phonics &amp; STEM with SkillSeed.
+            </p>
+          </div>
+          <div className="relative z-10 flex-shrink-0">
+            <SplashButton label1="Join Today" label2="Enroll Now" href="/signup" />
+          </div>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-16">
           
           {/* Brand Col */}
           <div className="lg:col-span-4 space-y-6">
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-12 h-12 rounded-full bg-white border-2 border-emerald-500 shadow-md flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                <div className="w-full h-full rounded-full bg-amber-50 flex items-center justify-center text-2xl">
-                  🍎
-                </div>
-              </div>
-              <div className="leading-tight">
-                <span className="text-2xl font-black tracking-tight text-slate-900 flex items-center gap-0">
-                  Skill<span className="text-[#C04DF7]">Seed</span>
-                </span>
-                <span className="text-[9px] uppercase font-black tracking-widest text-emerald-600 block">
-                  Phonics & STEM Academy
-                </span>
-              </div>
+            <Link to="/" className="flex items-center">
+              <SkillSeedLogo size="lg" />
             </Link>
 
             <p className="text-slate-600 text-sm leading-relaxed max-w-sm font-semibold">
@@ -100,6 +107,7 @@ export const Footer = () => {
             <div className="flex flex-col gap-3">
               <GooglePlayButton size="md" />
               <AppStoreButton size="md" />
+              <GalaxyStoreButton size="md" />
             </div>
           </div>
 

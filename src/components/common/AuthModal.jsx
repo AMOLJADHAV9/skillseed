@@ -22,8 +22,6 @@ export const AuthModal = () => {
   const [signupGrade, setSignupGrade] = useState('Grade 1-2 (Ages 5-7)');
   const [selectedAvatar, setSelectedAvatar] = useState('🧑‍🚀');
 
-  const avatars = ['🧑‍🚀', '🦖', '🤖', '🦄', '🧙‍♂️', '🦊'];
-
   if (!authModalOpen) return null;
 
   const handleDemoFill = (roleId) => {
@@ -208,30 +206,6 @@ export const AuthModal = () => {
           ) : (
             /* ────────────────── MODE 2: SIGNUP ────────────────── */
             <div className="space-y-4">
-              
-              {/* Avatar Selector */}
-              <div>
-                <label className="block text-[11px] font-black text-[#C04DF7] uppercase tracking-wider mb-1.5">
-                  Choose Explorer Avatar
-                </label>
-                <div className="grid grid-cols-6 gap-1.5">
-                  {avatars.map((av) => (
-                    <button
-                      key={av}
-                      type="button"
-                      onClick={() => setSelectedAvatar(av)}
-                      className={`h-11 text-xl rounded-none flex items-center justify-center transition border cursor-pointer ${
-                        selectedAvatar === av
-                          ? 'bg-[#C04DF7] border-[#C04DF7] text-white shadow-sm'
-                          : 'bg-slate-50 border-slate-200 hover:bg-purple-50'
-                      }`}
-                    >
-                      {av}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
               <form onSubmit={handleSignupSubmit} className="space-y-3">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>

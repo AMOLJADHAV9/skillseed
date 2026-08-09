@@ -1,181 +1,239 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { GrowthAreaChart } from '../charts/GrowthAreaChart';
-import { TrendingUp, Users, Globe, Award, Star, BookOpen } from 'lucide-react';
-
-/**
- * AnimatedCounter
- * Counts up smoothly from 0 to value when scrolled into view.
- */
-export const AnimatedCounter = ({ value, duration = 2.2 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
-  const [count, setCount] = useState(0);
-
-  // Extract numeric digits
-  const numericMatch = value.match(/\d[\d,]*/);
-  const targetNum = numericMatch ? parseInt(numericMatch[0].replace(/,/g, ''), 10) : 0;
-  
-  const matchStr = numericMatch ? numericMatch[0] : '';
-  const matchIdx = value.indexOf(matchStr);
-  const prefix = matchIdx > 0 ? value.substring(0, matchIdx) : '';
-  const suffix = matchIdx >= 0 ? value.substring(matchIdx + matchStr.length) : value;
-
-  useEffect(() => {
-    if (!isInView || targetNum === 0) return;
-
-    let startTime = null;
-    const durationMs = duration * 1000;
-
-    const step = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / durationMs, 1);
-      
-      // Smooth exponential ease-out
-      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      setCount(Math.floor(easeProgress * targetNum));
-
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      }
-    };
-
-    const animFrame = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(animFrame);
-  }, [isInView, targetNum, duration]);
-
-  return (
-    <span ref={ref} className="inline-block tabular-nums">
-      {prefix}
-      {isInView ? count.toLocaleString() : 0}
-      {suffix}
-    </span>
-  );
-};
+import { AnimatedCounter } from './GrowthSectionCounter';
+import {
+  TrendingUp,
+  Users,
+  Globe,
+  Star,
+  Award,
+  ArrowRight,
+  BarChart3,
+  Calendar,
+  Send
+} from 'lucide-react';
 
 export const GrowthSection = () => {
   const stats = [
     {
+      id: 'students',
       icon: Users,
       value: '10,000+',
       label: 'Students Enrolled',
       desc: 'Active young learners worldwide',
-      color: 'text-purple-600 bg-purple-100/80 border-purple-200',
+      badge: 'LIVE METRIC',
+      badgeSymbol: '●',
+      iconBg: 'bg-purple-100 text-[#7C3AED]',
+      badgeBg: 'bg-[#F3E8FF] text-[#7C3AED]',
+      waveBg: 'bg-gradient-to-t from-purple-100/60 via-purple-50/20 to-transparent',
+      buttonColor: 'text-[#7C3AED] hover:bg-[#7C3AED] hover:text-white border-purple-200',
     },
     {
+      id: 'countries',
       icon: Globe,
       value: '35+',
       label: 'Countries Reached',
       desc: 'Global learning community',
-      color: 'text-blue-600 bg-blue-100/80 border-blue-200',
+      badge: 'LIVE METRIC',
+      badgeSymbol: '●',
+      iconBg: 'bg-sky-100 text-[#0284C7]',
+      badgeBg: 'bg-[#E0F2FE] text-[#0284C7]',
+      waveBg: 'bg-gradient-to-t from-sky-100/60 via-sky-50/20 to-transparent',
+      buttonColor: 'text-[#0284C7] hover:bg-[#0284C7] hover:text-white border-sky-200',
     },
     {
+      id: 'satisfaction',
       icon: Star,
       value: '98%',
       label: 'Parent Satisfaction',
       desc: 'Top-rated phonics program',
-      color: 'text-amber-500 bg-amber-100/80 border-amber-200',
+      badge: 'LIVE METRIC',
+      badgeSymbol: '◆',
+      numberColor: 'text-[#D97706]',
+      iconBg: 'bg-amber-100 text-[#D97706]',
+      badgeBg: 'bg-[#FEF3C7] text-[#D97706]',
+      waveBg: 'bg-gradient-to-t from-amber-100/60 via-amber-50/20 to-transparent',
+      buttonColor: 'text-[#D97706] hover:bg-[#D97706] hover:text-white border-amber-200',
     },
     {
+      id: 'educators',
       icon: Award,
       value: '50+',
       label: 'Expert Educators',
       desc: 'Certified child specialists',
-      color: 'text-emerald-600 bg-emerald-100/80 border-emerald-200',
+      badge: 'LIVE METRIC',
+      badgeSymbol: '●',
+      numberColor: 'text-[#059669]',
+      iconBg: 'bg-emerald-100 text-[#059669]',
+      badgeBg: 'bg-[#DCFCE7] text-[#059669]',
+      waveBg: 'bg-gradient-to-t from-emerald-100/60 via-emerald-50/20 to-transparent',
+      buttonColor: 'text-[#059669] hover:bg-[#059669] hover:text-white border-emerald-200',
     },
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-[#FAF5F8] via-white to-[#FAF5F8] border-y border-pink-100/60 relative overflow-hidden">
-      {/* Background glow effects */}
+    <section className="py-20 md:py-28 bg-[#FAFBFF] relative overflow-hidden text-slate-900 font-sans">
+      
+      {/* Ambient background lighting */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute top-1/3 -left-32 w-96 h-96 bg-purple-100 rounded-full blur-[140px] opacity-35" />
-        <div className="absolute bottom-10 -right-32 w-96 h-96 bg-pink-100 rounded-full blur-[140px] opacity-35" />
+        <div className="absolute top-1/4 -right-32 w-96 h-96 bg-purple-100/60 rounded-full blur-[140px]" />
+        <div className="absolute bottom-10 -left-32 w-96 h-96 bg-sky-100/60 rounded-full blur-[140px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         
-        {/* Section Title */}
-        <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-none bg-purple-100/80 border border-purple-200 text-[#C04DF7] text-xs font-black uppercase tracking-wider shadow-xs">
-            <TrendingUp className="w-3.5 h-3.5" />
-            <span>Proven Growth &amp; Impact</span>
+        {/* ─── SECTION HEADER WITH DOODLES & UNDERLINE ───────────────── */}
+        <div className="relative text-center space-y-4 max-w-3xl mx-auto">
+          
+          {/* Top Left Paper Airplane Doodle */}
+          <motion.div
+            animate={{ y: [-4, 6, -4], rotate: [-4, 4, -4] }}
+            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute -top-6 left-2 sm:-left-12 opacity-80 text-indigo-400 hidden sm:block pointer-events-none"
+          >
+            <div className="flex items-center gap-1">
+              <span className="text-xs border-t-2 border-dashed border-indigo-300 w-8 inline-block" />
+              <Send className="w-6 h-6 transform -rotate-12" />
+            </div>
+          </motion.div>
+
+          {/* Doodles Right */}
+          <div className="absolute -top-4 right-0 sm:-right-8 flex items-center gap-3 text-2xl pointer-events-none hidden sm:flex">
+            <span className="animate-pulse">🌸</span>
+            <span className="text-sky-400">✦</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-            Empowering Young Minds Worldwide
+          
+          <div className="absolute top-12 left-8 text-amber-400 text-xl pointer-events-none hidden sm:block animate-bounce">
+            ⭐
+          </div>
+
+          {/* Badge Pill */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F3E8FF] border border-[#E9D5FF] text-[#9333EA] shadow-sm">
+            <TrendingUp className="w-4 h-4 text-[#9333EA]" />
+            <span className="text-xs font-black tracking-wider uppercase">
+              PROVEN GROWTH &amp; IMPACT
+            </span>
+          </div>
+
+          {/* Main Headline */}
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0F172A] tracking-tight leading-[1.15]">
+            Empowering Young Minds{' '}
+            <span className="relative inline-block text-[#7C3AED]">
+              Worldwide
+              {/* Yellow Brush Underline */}
+              <svg
+                className="absolute -bottom-2 left-0 w-full h-3 text-amber-400 pointer-events-none"
+                viewBox="0 0 120 18"
+                fill="none"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M 3 14 C 35 4, 85 4, 117 14"
+                  stroke="currentColor"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
           </h2>
-          <p className="text-xs sm:text-sm md:text-base text-slate-500 font-semibold max-w-2xl mx-auto leading-relaxed">
+
+          {/* Subtitle */}
+          <p className="text-sm sm:text-base text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
             See how our interactive learning methodology translates into real student progress and global adoption over time.
           </p>
         </div>
 
-        {/* Counter Cards Grid (Square Styling) */}
+        {/* ─── TOP 4 METRIC CARDS GRID ────────────────────────────────── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((item, idx) => {
             const Icon = item.icon;
             return (
               <motion.div
-                key={item.label}
+                key={item.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.4 }}
-                whileHover={{ y: -4 }}
-                className="bg-white rounded-none p-6 relative overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all group text-left"
+                whileHover={{ y: -5 }}
+                className="group relative bg-white rounded-[28px] p-6 border border-slate-100 shadow-xl shadow-slate-100/70 overflow-hidden flex flex-col justify-between h-[215px] transition-all cursor-pointer"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className={`w-12 h-12 rounded-none flex items-center justify-center border ${item.color} shadow-sm group-hover:scale-105 transition-transform`}>
+                {/* Top Row: Icon & Live Metric Pill */}
+                <div className="flex items-center justify-between relative z-10">
+                  <div className={`w-12 h-12 rounded-2xl ${item.iconBg} flex items-center justify-center shadow-sm font-bold text-xl group-hover:scale-110 transition-transform`}>
                     <Icon className="w-6 h-6" strokeWidth={2.2} />
                   </div>
-                  <span className="text-[9px] font-black tracking-widest uppercase px-2.5 py-0.5 rounded-none bg-slate-100 text-slate-600 border border-slate-200">
-                    Live Metric
+                  
+                  <span className={`inline-flex items-center gap-1 text-[10px] font-black tracking-wider uppercase px-3 py-1 rounded-full ${item.badgeBg} shadow-xs`}>
+                    <span className="text-[8px]">{item.badgeSymbol}</span>
+                    <span>{item.badge}</span>
                   </span>
                 </div>
 
-                <div className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mb-1">
-                  <AnimatedCounter value={item.value} duration={2.2} />
+                {/* Middle Body: Value, Title & Subtitle */}
+                <div className="relative z-10 my-auto">
+                  <div className={`text-3xl sm:text-4xl font-black ${item.numberColor || 'text-slate-900'} tracking-tight leading-none`}>
+                    <AnimatedCounter value={item.value} duration={2.2} />
+                  </div>
+                  <div className="text-sm font-bold text-slate-900 mt-2">{item.label}</div>
+                  <div className="text-xs font-semibold text-slate-400 mt-0.5">{item.desc}</div>
                 </div>
-                <div className="text-sm font-black text-slate-800 mb-0.5">{item.label}</div>
-                <div className="text-xs font-semibold text-slate-500 leading-snug">{item.desc}</div>
+
+                {/* Bottom Row: Wave Gradient Tint & Action Button */}
+                <div className={`absolute inset-x-0 bottom-0 h-24 ${item.waveBg} pointer-events-none z-0 rounded-b-[28px]`} />
+
+                <div className="relative z-10 flex justify-end">
+                  <div className={`w-8 h-8 rounded-full bg-white border ${item.buttonColor} shadow-md flex items-center justify-center transition-all`}>
+                    <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                  </div>
+                </div>
               </motion.div>
             );
           })}
         </div>
 
-        {/* Graph Animation Container (Square Styling) */}
+        {/* ─── BOTTOM STUDENT ENROLLMENT CHART CARD ───────────────────── */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="bg-white rounded-none p-6 sm:p-8 border-2 border-purple-100 shadow-md relative overflow-hidden text-left"
+          className="bg-white rounded-[32px] p-6 sm:p-8 border border-slate-100 shadow-xl shadow-slate-100/80 relative overflow-hidden"
         >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-none bg-emerald-500 animate-pulse" />
+          {/* Header Inside Card */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-xl flex-shrink-0 shadow-sm">
+                <BarChart3 className="w-6 h-6" />
+              </div>
+              <div>
                 <h3 className="text-lg sm:text-xl font-black text-slate-900">
                   Student Enrollment &amp; Milestone Progression
                 </h3>
+                <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
+                  Interactive real-time graph tracking monthly growth across active courses, students, and global reach.
+                </p>
               </div>
-              <p className="text-xs text-slate-500 font-semibold mt-1">
-                Interactive real-time graph tracking monthly growth across active courses, students, and global reach.
-              </p>
             </div>
-            
-            <div className="flex items-center gap-3 self-start sm:self-auto">
-              <span className="text-xs font-black text-purple-600 bg-purple-50 border border-purple-200 px-3.5 py-1.5 rounded-none flex items-center gap-1.5 shadow-xs">
-                <BookOpen className="w-3.5 h-3.5 text-purple-600" />
-                2026 Growth Trajectory
-              </span>
+
+            {/* Dropdown Pill Button */}
+            <div className="self-start md:self-auto">
+              <button className="px-4 py-2 rounded-full bg-purple-50 border border-purple-200 text-[#7C3AED] text-xs font-black flex items-center gap-2 shadow-sm hover:bg-purple-100 transition cursor-pointer">
+                <Calendar className="w-4 h-4" />
+                <span>2024 Growth Trajectory</span>
+                <span className="text-[10px]">▼</span>
+              </button>
             </div>
           </div>
 
-          {/* Area Chart Component */}
+          {/* Interactive Recharts Line / Area Chart */}
           <GrowthAreaChart />
+
         </motion.div>
 
       </div>
     </section>
   );
 };
+
+export default GrowthSection;

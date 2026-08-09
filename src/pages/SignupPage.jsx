@@ -17,8 +17,6 @@ export const SignupPage = () => {
   const [selectedAvatar, setSelectedAvatar] = useState('🧑‍🚀');
   const [role, setRole] = useState('student');
 
-  const avatars = ['🧑‍🚀', '🦖', '🤖', '🦄', '🧙‍♂️', '🦊'];
-
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password, role);
@@ -67,29 +65,6 @@ export const SignupPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="bg-white p-6 sm:p-8 rounded-none border border-slate-200 shadow-xl space-y-6 text-left"
         >
-          {/* Avatar Selector */}
-          <div>
-            <label className="block text-xs font-black text-[#C04DF7] uppercase tracking-wider mb-2">
-              Choose Your Explorer Avatar
-            </label>
-            <div className="grid grid-cols-6 gap-2">
-              {avatars.map((av) => (
-                <button
-                  key={av}
-                  type="button"
-                  onClick={() => setSelectedAvatar(av)}
-                  className={`h-12 sm:h-14 text-2xl rounded-none flex items-center justify-center transition border cursor-pointer ${
-                    selectedAvatar === av
-                      ? 'bg-[#C04DF7] border-[#C04DF7] text-white shadow-md'
-                      : 'bg-slate-50 border-slate-200 hover:bg-purple-50'
-                  }`}
-                >
-                  {av}
-                </button>
-              ))}
-            </div>
-          </div>
-
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
