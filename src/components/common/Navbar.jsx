@@ -155,16 +155,18 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <div className="flex items-center lg:hidden gap-3">
+        <div className="flex items-center lg:hidden gap-2">
           <button
             onClick={() => setSearchOpen(!searchOpen)}
-            className="p-2 text-slate-500 hover:text-slate-900"
+            className="w-11 h-11 flex items-center justify-center text-slate-500 hover:text-slate-900 rounded-xl transition cursor-pointer"
+            aria-label="Search"
           >
             <Search className="w-5 h-5" />
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-slate-700 bg-slate-100 rounded-xl cursor-pointer"
+            className="w-11 h-11 flex items-center justify-center text-slate-700 bg-slate-100 rounded-xl cursor-pointer"
+            aria-label="Menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -185,12 +187,12 @@ export const Navbar = () => {
               <input
                 type="text"
                 placeholder="Search courses, mentors, skills..."
-                className="w-full bg-transparent text-sm text-slate-900 focus:outline-none placeholder-slate-400"
+                className="w-full bg-transparent text-sm text-slate-900 focus:outline-none placeholder-slate-400 h-11"
                 autoFocus
               />
               <button
                 onClick={() => setSearchOpen(false)}
-                className="text-xs font-bold text-slate-500 hover:text-slate-800"
+                className="text-xs font-bold text-slate-500 hover:text-slate-800 min-h-[44px] px-2"
               >
                 Close
               </button>
@@ -214,7 +216,7 @@ export const Navbar = () => {
                   key={link.name}
                   to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-2.5 text-sm font-semibold rounded-xl transition ${
+                  className={`flex items-center px-4 min-h-[44px] text-sm font-semibold rounded-xl transition ${
                     location.pathname === link.path
                       ? 'bg-indigo-50 text-[#4F46E5] font-bold'
                       : 'text-slate-700 hover:bg-slate-50'
@@ -224,16 +226,16 @@ export const Navbar = () => {
                 </Link>
               ))}
 
-              <div className="pt-4 flex flex-col gap-2.5 border-t border-slate-100">
+              <div className="pt-4 flex flex-col gap-3 border-t border-slate-100">
                 <button
                   onClick={() => { setMobileMenuOpen(false); openAuthModal('login'); }}
-                  className="w-full py-2.5 border border-slate-300 text-slate-800 font-bold text-sm rounded-xl cursor-pointer"
+                  className="w-full min-h-[44px] py-2.5 border border-slate-300 text-slate-800 font-bold text-sm rounded-xl cursor-pointer"
                 >
                   Login
                 </button>
                 <button
                   onClick={() => { setMobileMenuOpen(false); openAuthModal('signup'); }}
-                  className="w-full py-2.5 bg-[#6366F1] text-white font-bold text-sm rounded-xl shadow-md cursor-pointer"
+                  className="w-full min-h-[44px] py-2.5 bg-[#6366F1] text-white font-bold text-sm rounded-xl shadow-md cursor-pointer"
                 >
                   Join for Free
                 </button>
@@ -247,4 +249,3 @@ export const Navbar = () => {
 };
 
 export default Navbar;
-

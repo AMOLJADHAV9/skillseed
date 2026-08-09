@@ -168,12 +168,13 @@ export const SkillSeedHero = () => {
               </span>
             </motion.div>
 
-            {/* Main Headline (Multi-Color Accent text matching Image 1) */}
+            {/* Main Headline with clamp() fluid typography */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0F172A] tracking-tight leading-[1.12]"
+              className="font-black text-[#0F172A] tracking-tight leading-[1.15]"
+              style={{ fontSize: 'clamp(2.1rem, 7.8vw, 4.5rem)' }}
             >
               Discover{' '}
               <span className="relative inline-block text-[#4F46E5]">
@@ -204,22 +205,22 @@ export const SkillSeedHero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-slate-600 font-medium text-base sm:text-lg max-w-lg leading-relaxed"
+              className="text-slate-600 font-medium text-sm sm:text-base lg:text-lg max-w-[92%] sm:max-w-lg leading-relaxed"
             >
               A creative learning space for curious minds. Explore courses, connect with mentors, and build the future you dream of.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons (Stacked on small mobile, horizontal on sm+) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-wrap items-center gap-5 pt-2"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-5 pt-2"
             >
               {/* Primary CTA: Start Your Journey */}
               <Link
                 to="/signup"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[#5B63F6] hover:bg-[#4B52E3] text-white font-bold text-base rounded-full shadow-xl shadow-indigo-200 hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200"
+                className="inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:py-4 bg-[#5B63F6] hover:bg-[#4B52E3] text-white font-bold text-sm sm:text-base rounded-full shadow-xl shadow-indigo-200 hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 min-h-[44px]"
               >
                 <span>Start Your Journey</span>
                 <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
@@ -230,9 +231,9 @@ export const SkillSeedHero = () => {
               {/* Secondary CTA: Watch Video */}
               <button
                 onClick={() => setVideoModalOpen(true)}
-                className="inline-flex items-center gap-3.5 group cursor-pointer"
+                className="inline-flex items-center justify-center sm:justify-start gap-3.5 group cursor-pointer min-h-[44px] py-1"
               >
-                <div className="w-12 h-12 rounded-full bg-indigo-50 group-hover:bg-indigo-100 text-[#5B63F6] flex items-center justify-center border border-indigo-100 shadow-sm transition-transform duration-200 group-hover:scale-110">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-indigo-50 group-hover:bg-indigo-100 text-[#5B63F6] flex items-center justify-center border border-indigo-100 shadow-sm transition-transform duration-200 group-hover:scale-110 flex-shrink-0">
                   <Play className="w-5 h-5 fill-current ml-0.5" />
                 </div>
                 <div className="text-left leading-tight">

@@ -55,13 +55,18 @@
     --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
+  html, body, #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
   body {
     font-family: var(--font-body);
     background-color: #faf6f9;
     color: #1e1b2e;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
   }
 
   h1, h2, h3, h4, h5, h6 {

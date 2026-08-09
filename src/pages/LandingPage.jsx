@@ -141,15 +141,14 @@ export const LandingPage = () => {
         <div className="absolute bottom-[10%] right-[20%] w-[350px] h-[350px] rounded-full bg-indigo-200 opacity-15 blur-[100px]" />
       </div>
 
-      {/* Fixed "Book Demo" vertical pill on far right */}
-      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40">
+      {/* Floating "Book Demo" Button (Responsive: Bottom-Right Pill on Mobile, Right Vertical Badge on Desktop) */}
+      <div className="fixed right-3 bottom-4 lg:bottom-auto lg:right-0 lg:top-1/2 lg:-translate-y-1/2 z-40">
         <button
           onClick={() => setDemoModalOpen(true)}
-          className="bg-white border-2 border-purple-300 text-purple-600 font-black text-xs px-3 py-3 rounded-none shadow-xl flex flex-col items-center gap-1 cursor-pointer hover:bg-purple-50 transition"
-          style={{ writingMode: 'vertical-rl' }}
+          className="bg-white border-2 border-purple-400 text-purple-700 font-black text-xs px-3.5 py-2.5 lg:py-4 lg:px-2.5 rounded-full lg:rounded-l-2xl lg:rounded-r-none shadow-2xl flex flex-row lg:flex-col items-center gap-1.5 cursor-pointer hover:bg-purple-50 transition min-h-[44px]"
         >
           <span>Book Demo</span>
-          <span className="text-amber-400">⭐</span>
+          <span className="text-amber-400 text-sm">⭐</span>
         </button>
       </div>
 
@@ -159,12 +158,8 @@ export const LandingPage = () => {
       {/* ─── KIDS PHOTO GALLERY GRID (NEW) ────────────── */}
       <KidsPhotoGallery />
 
-
-
       {/* ─── GROWTH & ANIMATED STATS COUNTER SECTION ────── */}
       <GrowthSection />
-
-
 
       {/* ─── SOCIAL PROOF ──────────────────────────────── */}
       <SocialProofSection />
@@ -185,7 +180,7 @@ export const LandingPage = () => {
       <TestimonialV2 />
 
       {/* ─── FAQ SECTION ──────────────────────────────── */}
-      <section className="py-16 bg-gradient-to-b from-[#FAF5F8] to-white border-t border-pink-100 overflow-hidden">
+      <section className="py-12 sm:py-16 bg-gradient-to-b from-[#FAF5F8] to-white border-t border-pink-100 overflow-hidden">
         <FaqSection
           data={{
             mainTitle: "Frequently Asked Questions",
@@ -240,8 +235,7 @@ export const LandingPage = () => {
         />
       </section>
 
-
-      {/* ─── COOKIE BANNER ────────────────────────────── */}
+      {/* ─── COOKIE BANNER (RESPONSIVE MOBILE REDESIGN) ────────────────────────────── */}
       <AnimatePresence>
         {cookieBannerVisible && (
           <motion.div
@@ -250,22 +244,22 @@ export const LandingPage = () => {
             exit={{ y: 100, opacity: 0 }}
             className="fixed bottom-0 inset-x-0 z-50 bg-[#1a1a2e] text-white p-4 sm:p-5 border-t border-slate-700 shadow-2xl"
           >
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-semibold">
-              <p className="text-slate-300 max-w-4xl leading-relaxed">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 text-xs font-semibold">
+              <p className="text-slate-300 max-w-4xl leading-relaxed text-center md:text-left">
                 We use cookies to enhance your experience, maintain your session, and analyze platform usage.{' '}
                 <span className="text-amber-400 font-bold">Essential cookies</span> are technically necessary for the platform to function.{' '}
                 <span className="text-amber-400 font-bold">Non-essential cookies</span> are used for analytics.
               </p>
-              <div className="flex items-center gap-3 flex-shrink-0">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 flex-shrink-0">
                 <button
                   onClick={() => setCookieBannerVisible(false)}
-                  className="px-4 py-2 border border-slate-600 hover:border-slate-400 text-white rounded-xl text-xs font-bold transition cursor-pointer"
+                  className="px-4 py-2.5 border border-slate-600 hover:border-slate-400 text-white rounded-xl text-xs font-bold transition cursor-pointer min-h-[44px]"
                 >
                   Reject Non-Essential
                 </button>
                 <button
                   onClick={() => setCookieBannerVisible(false)}
-                  className="px-5 py-2 bg-[#22C55E] hover:bg-[#16a34a] text-white font-black rounded-xl text-xs transition cursor-pointer shadow-md"
+                  className="px-5 py-2.5 bg-[#22C55E] hover:bg-[#16a34a] text-white font-black rounded-xl text-xs transition cursor-pointer shadow-md min-h-[44px]"
                 >
                   Accept All
                 </button>
