@@ -67,14 +67,14 @@ export const SkillSeedHero = () => {
         </svg>
       </div>
 
-      {/* ─── 2. SCATTERED HAND-DRAWN DOODLES & VECTOR SVGS ──────── */}
-      <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+      {/* ─── 2. SCATTERED HAND-DRAWN DOODLES & VECTOR SVGS (DESKTOP & TABLET ONLY) ──────── */}
+      <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden hidden sm:block">
         
         {/* Animated Floating Lottie SVG Doodle */}
         <motion.div
           animate={{ y: [-8, 8, -8], rotate: [-4, 4, -4] }}
           transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-2 left-[1%] sm:left-[3%] w-28 h-28 sm:w-36 sm:h-36 opacity-90 filter drop-shadow-lg z-20"
+          className="absolute top-2 left-[1%] sm:left-[3%] w-24 h-24 sm:w-36 sm:h-36 opacity-90 filter drop-shadow-lg z-20 hidden lg:block"
         >
           <DotLottieReact
             src="https://lottie.host/bcb9268c-db9e-4464-8201-d163c81e611a/niKC3IOv4Y.lottie"
@@ -88,7 +88,7 @@ export const SkillSeedHero = () => {
         <motion.div
           animate={{ y: [-6, 6, -6], rotate: [-8, 8, -8] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-8 left-[47%] w-14 h-14 opacity-85 filter drop-shadow-md"
+          className="absolute top-8 left-[47%] w-14 h-14 opacity-85 filter drop-shadow-md hidden lg:block"
         >
           <img src="/svg/rocket-pencil-svgrepo-com.svg" alt="Rocket Pencil" className="w-full h-full object-contain" />
         </motion.div>
@@ -97,7 +97,7 @@ export const SkillSeedHero = () => {
         <motion.div
           animate={{ y: [6, -6, 6] }}
           transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-28 left-[39%] w-12 h-12 opacity-80 filter drop-shadow-md"
+          className="absolute top-28 left-[39%] w-12 h-12 opacity-80 filter drop-shadow-md hidden lg:block"
         >
           <img src="/svg/book-opened-svgrepo-com.svg" alt="Open Book" className="w-full h-full object-contain" />
         </motion.div>
@@ -106,7 +106,7 @@ export const SkillSeedHero = () => {
         <motion.div
           animate={{ y: [-5, 5, -5] }}
           transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-16 right-[40%] w-14 h-14 opacity-85 filter drop-shadow-md"
+          className="absolute top-16 right-[40%] w-14 h-14 opacity-85 filter drop-shadow-md hidden lg:block"
         >
           <img src="/svg/bachelor-hat-svgrepo-com.svg" alt="Graduation Cap" className="w-full h-full object-contain" />
         </motion.div>
@@ -115,7 +115,7 @@ export const SkillSeedHero = () => {
         <motion.div
           animate={{ rotate: [0, 10, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-[44%] left-[35%] w-14 h-14 opacity-85 filter drop-shadow-md"
+          className="absolute top-[44%] left-[35%] w-14 h-14 opacity-85 filter drop-shadow-md hidden lg:block"
         >
           <img src="/svg/earth-svgrepo-com.svg" alt="Earth Globe" className="w-full h-full object-contain" />
         </motion.div>
@@ -124,7 +124,7 @@ export const SkillSeedHero = () => {
         <motion.div
           animate={{ scale: [0.95, 1.05, 0.95] }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-[20%] right-[31%] w-12 h-12 opacity-80 filter drop-shadow-md"
+          className="absolute top-[20%] right-[31%] w-12 h-12 opacity-80 filter drop-shadow-md hidden lg:block"
         >
           <img src="/svg/reagent-bottle-svgrepo-com.svg" alt="Science Flask" className="w-full h-full object-contain" />
         </motion.div>
@@ -133,19 +133,14 @@ export const SkillSeedHero = () => {
         <motion.div
           animate={{ scale: [0.9, 1.1, 0.9], rotate: [0, 15, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-6 right-[14%] w-10 h-10 opacity-80 filter drop-shadow-sm"
+          className="absolute top-6 right-[14%] w-10 h-10 opacity-80 filter drop-shadow-sm hidden md:block"
         >
           <img src="/svg/little-flower-svgrepo-com.svg" alt="Flower" className="w-full h-full object-contain" />
         </motion.div>
-        <div className="absolute top-12 left-[10%] text-amber-400 text-2xl animate-bounce">⭐</div>
-        <div className="absolute top-[52%] left-[45%] text-amber-400 text-xl">⭐</div>
-
-        {/* Music Notes */}
-        <div className="absolute top-28 left-[32%] opacity-50 text-indigo-400 text-xl">🎵</div>
-        <div className="absolute top-[35%] right-[22%] opacity-50 text-pink-400 text-lg">🎶</div>
+        <div className="absolute top-12 left-[10%] text-amber-400 text-2xl animate-bounce hidden md:block">⭐</div>
 
         {/* Dotted Grid Pattern Top Left */}
-        <div className="absolute top-4 left-4 opacity-25 flex flex-col gap-1.5">
+        <div className="absolute top-4 left-4 opacity-25 flex flex-col gap-1.5 hidden lg:flex">
           <div className="flex gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-slate-400"/><div className="w-1.5 h-1.5 rounded-full bg-slate-400"/><div className="w-1.5 h-1.5 rounded-full bg-slate-400"/></div>
           <div className="flex gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-slate-400"/><div className="w-1.5 h-1.5 rounded-full bg-slate-400"/><div className="w-1.5 h-1.5 rounded-full bg-slate-400"/></div>
           <div className="flex gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-slate-400"/><div className="w-1.5 h-1.5 rounded-full bg-slate-400"/><div className="w-1.5 h-1.5 rounded-full bg-slate-400"/></div>
@@ -254,44 +249,44 @@ export const SkillSeedHero = () => {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="pt-6"
+              className="pt-4 sm:pt-6 w-full"
             >
-              <div className="bg-white/95 backdrop-blur-md rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50 p-4 sm:p-5 inline-flex flex-wrap sm:flex-nowrap items-center gap-6 sm:gap-8">
+              <div className="bg-white/95 backdrop-blur-md rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50 p-3 sm:p-5 w-full sm:w-auto flex items-center justify-between sm:justify-start gap-2 sm:gap-8">
                 
                 {/* Stat 1: 10K+ Active Learners */}
-                <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-2xl bg-[#10B981] text-white flex items-center justify-center shadow-md shadow-emerald-200 flex-shrink-0">
-                    <Users className="w-5 h-5" />
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-[#10B981] text-white flex items-center justify-center shadow-md shadow-emerald-200 flex-shrink-0">
+                    <Users className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <div className="text-lg sm:text-xl font-black text-slate-900 leading-tight">10K+</div>
-                    <div className="text-[11px] font-semibold text-slate-500">Active Learners</div>
+                    <div className="text-sm sm:text-xl font-black text-slate-900 leading-tight">10K+</div>
+                    <div className="text-[9px] sm:text-[11px] font-semibold text-slate-500">Learners</div>
                   </div>
                 </div>
 
-                <div className="hidden sm:block w-px h-9 bg-slate-200" />
+                <div className="w-px h-7 sm:h-9 bg-slate-200" />
 
                 {/* Stat 2: 500+ Expert Mentors */}
-                <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-2xl bg-[#F59E0B] text-white flex items-center justify-center shadow-md shadow-amber-200 flex-shrink-0">
-                    <GraduationCap className="w-5 h-5" />
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-[#F59E0B] text-white flex items-center justify-center shadow-md shadow-amber-200 flex-shrink-0">
+                    <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <div className="text-lg sm:text-xl font-black text-slate-900 leading-tight">500+</div>
-                    <div className="text-[11px] font-semibold text-slate-500">Expert Mentors</div>
+                    <div className="text-sm sm:text-xl font-black text-slate-900 leading-tight">500+</div>
+                    <div className="text-[9px] sm:text-[11px] font-semibold text-slate-500">Mentors</div>
                   </div>
                 </div>
 
-                <div className="hidden sm:block w-px h-9 bg-slate-200" />
+                <div className="w-px h-7 sm:h-9 bg-slate-200" />
 
                 {/* Stat 3: 100+ Courses */}
-                <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-2xl bg-[#F43F5E] text-white flex items-center justify-center shadow-md shadow-rose-200 flex-shrink-0">
-                    <BookOpen className="w-5 h-5" />
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-[#F43F5E] text-white flex items-center justify-center shadow-md shadow-rose-200 flex-shrink-0">
+                    <BookOpen className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <div className="text-lg sm:text-xl font-black text-slate-900 leading-tight">100+</div>
-                    <div className="text-[11px] font-semibold text-slate-500">Courses</div>
+                    <div className="text-sm sm:text-xl font-black text-slate-900 leading-tight">100+</div>
+                    <div className="text-[9px] sm:text-[11px] font-semibold text-slate-500">Courses</div>
                   </div>
                 </div>
 
@@ -301,15 +296,15 @@ export const SkillSeedHero = () => {
           </div>
 
           {/* ─── RIGHT COLUMN: FULL SCREEN 3D WINDING PATH CANVAS ────────── */}
-          <div className="lg:col-span-6 relative w-full h-[520px] sm:h-[620px] lg:h-[680px]">
+          <div className="lg:col-span-6 relative w-full h-[460px] sm:h-[600px] lg:h-[680px] mt-6 lg:mt-0">
 
-            {/* Floating Animated Lottie Feature Card Widget (Positioned cleanly on Left side of Canvas) */}
+            {/* Floating Animated Lottie Feature Card Widget (Hidden on mobile to prevent floating whitespace) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
               whileHover={{ scale: 1.05, y: -4 }}
-              className="absolute -top-3 left-[0%] lg:-left-6 z-30 bg-white/95 backdrop-blur-md rounded-3xl p-3 sm:p-3.5 shadow-xl shadow-purple-900/5 border border-purple-100/80 flex items-center gap-3 max-w-[210px] sm:max-w-[230px] cursor-pointer"
+              className="hidden sm:flex absolute -top-3 left-[0%] lg:-left-6 z-30 bg-white/95 backdrop-blur-md rounded-3xl p-3 sm:p-3.5 shadow-xl shadow-purple-900/5 border border-purple-100/80 items-center gap-3 max-w-[210px] sm:max-w-[230px] cursor-pointer"
             >
               <div className="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0 bg-purple-50/80 rounded-2xl p-1 border border-purple-100 flex items-center justify-center">
                 <DotLottieReact
@@ -333,7 +328,7 @@ export const SkillSeedHero = () => {
             <motion.div
               animate={{ scale: [1, 1.1, 1], rotate: [0, 4, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute top-2 right-[18%] sm:right-[22%] text-5xl sm:text-6xl drop-shadow-xl z-30 pointer-events-none"
+              className="absolute top-2 right-[18%] sm:right-[22%] text-4xl sm:text-6xl drop-shadow-xl z-30 pointer-events-none"
             >
               💡
             </motion.div>
@@ -426,7 +421,7 @@ export const SkillSeedHero = () => {
                 whileHover={{ scale: 1.15, zIndex: 40 }}
                 className={`absolute ${avatar.position} z-30 cursor-pointer group`}
               >
-                <div className={`w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full border-4 ${avatar.borderColor} ${avatar.shadowColor} shadow-xl overflow-hidden bg-white`}>
+                <div className={`w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full border-4 ${avatar.borderColor} ${avatar.shadowColor} shadow-xl overflow-hidden bg-white`}>
                   <img src={avatar.img} alt={avatar.name} className="w-full h-full object-cover" />
                 </div>
                 {/* Tooltip on Hover */}
@@ -442,10 +437,10 @@ export const SkillSeedHero = () => {
               initial={{ opacity: 0, scale: 0.8, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.5, type: 'spring' }}
-              className="absolute bottom-[3%] left-[2%] sm:left-[5%] bg-white/95 backdrop-blur-md rounded-3xl px-4 py-3 shadow-2xl border border-slate-100 max-w-[210px] z-30 flex items-center gap-2.5"
+              className="absolute bottom-[2%] left-4 sm:left-[5%] bg-white/95 backdrop-blur-md rounded-3xl px-3.5 py-2.5 sm:px-4 sm:py-3 shadow-2xl border border-slate-100 max-w-[190px] sm:max-w-[210px] z-30 flex items-center gap-2"
             >
-              <div className="text-xl">🚀</div>
-              <p className="text-xs sm:text-xs font-black text-slate-900 leading-tight">
+              <div className="text-lg sm:text-xl flex-shrink-0">🚀</div>
+              <p className="text-[11px] sm:text-xs font-black text-slate-900 leading-tight">
                 Your <span className="text-[#4F46E5]">journey</span> begins right{' '}
                 <span className="relative inline-block text-rose-500">
                   here!
@@ -456,12 +451,12 @@ export const SkillSeedHero = () => {
               </p>
             </motion.div>
 
-            {/* Animated Floating Lottie Graphic (Bottom Right Corner of Hero) */}
+            {/* Animated Floating Lottie Graphic (Bottom Right Corner - Hidden on mobile) */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="absolute bottom-[4%] right-[2%] sm:right-[5%] w-28 h-28 sm:w-36 sm:h-36 z-30 pointer-events-none drop-shadow-xl"
+              className="hidden sm:block absolute bottom-[4%] right-[2%] sm:right-[5%] w-28 h-28 sm:w-36 sm:h-36 z-30 pointer-events-none drop-shadow-xl"
             >
               <DotLottieReact
                 src="https://lottie.host/cdd17168-019b-4c46-8fda-a1fb53cbf51f/EgUQYZlEdW.lottie"
