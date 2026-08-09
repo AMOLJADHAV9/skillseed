@@ -245,6 +245,34 @@ export const SkillSeedHero = () => {
               </button>
             </motion.div>
 
+            {/* Mobile Vector SVG Feature Badge Strip (Book, Pen, Settings, Bag) */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="flex md:hidden items-center justify-between gap-2 pt-3 w-full"
+            >
+              <div className="flex flex-col items-center gap-1 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 shadow-md border border-indigo-100 flex-1 max-w-[80px]">
+                <img src="/svg/book-svgrepo-com.svg" alt="Book" className="w-7 h-7 object-contain" />
+                <span className="text-[10px] font-black text-slate-800">Reading</span>
+              </div>
+
+              <div className="flex flex-col items-center gap-1 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 shadow-md border border-purple-100 flex-1 max-w-[80px]">
+                <img src="/svg/rocket-pencil-svgrepo-com.svg" alt="Pen Pencil" className="w-7 h-7 object-contain" />
+                <span className="text-[10px] font-black text-slate-800">Writing</span>
+              </div>
+
+              <div className="flex flex-col items-center gap-1 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 shadow-md border border-amber-100 flex-1 max-w-[80px]">
+                <img src="/svg/set-up-svgrepo-com.svg" alt="Settings" className="w-7 h-7 object-contain" />
+                <span className="text-[10px] font-black text-slate-800">Settings</span>
+              </div>
+
+              <div className="flex flex-col items-center gap-1 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 shadow-md border border-emerald-100 flex-1 max-w-[80px]">
+                <img src="/svg/bag-svgrepo-com.svg" alt="School Bag" className="w-7 h-7 object-contain" />
+                <span className="text-[10px] font-black text-slate-800">Classes</span>
+              </div>
+            </motion.div>
+
             {/* Floating Stats Bar Pill (Bottom Left) */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -296,8 +324,8 @@ export const SkillSeedHero = () => {
 
           </div>
 
-          {/* ─── RIGHT COLUMN: FULL SCREEN 3D WINDING PATH CANVAS ────────── */}
-          <div className="lg:col-span-6 relative w-full h-[460px] sm:h-[600px] lg:h-[680px] mt-6 lg:mt-0">
+          {/* ─── RIGHT COLUMN: FULL SCREEN 3D WINDING PATH CANVAS (HIDDEN ON PHONE DEVICES) ────────── */}
+          <div className="hidden md:block lg:col-span-6 relative w-full h-[460px] sm:h-[600px] lg:h-[680px] mt-6 lg:mt-0">
 
             {/* Floating Animated Lottie Feature Card Widget (Hidden on mobile to prevent floating whitespace) */}
             <motion.div
