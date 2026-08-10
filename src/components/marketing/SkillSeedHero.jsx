@@ -155,18 +155,7 @@ export const SkillSeedHero = () => {
           {/* ─── LEFT COLUMN: HEADLINE, SUBTITLE & CTAS ─────────────── */}
           <div className="lg:col-span-6 space-y-7 text-left pt-2 pb-10">
 
-            {/* Tag Badge Pill */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ECFDF5] border border-[#A7F3D0] text-[#059669] shadow-sm"
-            >
-              <span className="text-sm">🌱</span>
-              <span className="text-xs font-black tracking-wider uppercase">
-                Learn • Grow • Achieve
-              </span>
-            </motion.div>
+
 
             {/* Main Headline with clamp() fluid typography */}
             <motion.h1

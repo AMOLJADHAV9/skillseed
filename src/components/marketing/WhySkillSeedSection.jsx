@@ -1,27 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-  Heart,
   ArrowRight,
-  Send,
-  Video,
-  BookOpen,
-  Calculator,
-  BarChart3,
-  Gamepad2,
-  Sparkles,
   Star
 } from 'lucide-react';
 
 export const WhySkillSeedSection = () => {
-  const avatars = [
-    'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=120',
-    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=120',
-    'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=120',
-    'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=120',
-    'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=120',
-  ];
-
   const features = [
     {
       id: 'live-classes',
@@ -111,72 +95,87 @@ export const WhySkillSeedSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-[#FAF9FF] relative overflow-hidden text-slate-900 font-sans">
+    <section className="py-20 md:py-28 bg-[#F8F9FE] relative overflow-hidden text-slate-900 font-sans">
       
-      {/* Background Ambient Lighting */}
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-purple-200/40 rounded-full blur-[140px]" />
-        <div className="absolute bottom-10 -right-32 w-96 h-96 bg-pink-200/40 rounded-full blur-[140px]" />
-        <div className="absolute top-1/2 right-10 w-72 h-72 bg-purple-100/50 rounded-full blur-[120px]" />
+      {/* ─── BACKGROUND DECORATIVE PATTERNS ──────────────────────────────── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        
+        {/* 1. Top-Left Purple Dot Grid Matrix (Neatly aligned inside bounds) */}
+        <div className="absolute top-2 left-2 sm:top-4 sm:left-4 grid grid-cols-12 gap-2 sm:gap-2.5 opacity-35">
+          {Array.from({ length: 96 }).map((_, i) => (
+            <div key={i} className="w-1.5 h-1.5 rounded-full bg-purple-300" />
+          ))}
+        </div>
+
+        {/* 2. Floating Outlined Shapes on Left Side */}
+        <div className="absolute top-1/3 left-6 sm:left-12 text-purple-300/80 hidden sm:block">
+          <svg className="w-10 h-10 stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2">
+            <polygon points="12,2 22,22 2,22" />
+          </svg>
+        </div>
+
+        <div className="absolute top-1/2 left-8 sm:left-16 w-3.5 h-3.5 border-2 border-emerald-400/80 rounded-full hidden sm:block" />
+        <div className="absolute bottom-16 left-6 sm:left-12 w-10 h-10 border-2 border-purple-300/50 rounded-full hidden sm:block" />
+
+        {/* 3. Right Side Large Lime-Green Angled Triangle Background Shape */}
+        <div className="absolute top-0 right-0 bottom-0 w-[48%] lg:w-[44%] max-w-[640px] hidden md:block overflow-hidden z-0">
+          
+          {/* SVG Angled Triangle Shape */}
+          <svg className="w-full h-full text-[#bef264]" viewBox="0 0 500 800" preserveAspectRatio="none" fill="currentColor">
+            <path d="M 160 0 L 500 0 L 500 800 L 0 800 Z" />
+          </svg>
+
+          {/* Green Shape Overlay Decorations */}
+          <div className="absolute inset-0 pointer-events-none">
+            
+            {/* Prominent Large White Triangle Outline in Top-Right Corner */}
+            <div className="absolute top-6 right-8 text-white z-10">
+              <svg className="w-16 h-16 sm:w-20 sm:h-20 stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="12,2 22,22 2,22" />
+              </svg>
+            </div>
+
+            {/* Top-Right White Dot Matrix Grid beside the Triangle */}
+            <div className="absolute top-6 right-32 sm:right-36 grid grid-cols-6 gap-2.5 opacity-50 z-10">
+              {Array.from({ length: 36 }).map((_, i) => (
+                <div key={i} className="w-1.5 h-1.5 rounded-full bg-white" />
+              ))}
+            </div>
+
+            {/* Small White Circle Rings */}
+            <div className="absolute top-36 right-24 w-5 h-5 border-2 border-white/80 rounded-full" />
+            <div className="absolute top-1/2 right-12 w-4 h-4 border-2 border-white/70 rounded-full" />
+
+            {/* Concentric Radar Rings in Center Right */}
+            <div className="absolute top-1/2 right-[-10%] -translate-y-1/2 w-[460px] h-[460px] border border-white/35 rounded-full" />
+            <div className="absolute top-1/2 right-[-10%] -translate-y-1/2 w-[350px] h-[350px] border border-white/35 rounded-full" />
+            <div className="absolute top-1/2 right-[-10%] -translate-y-1/2 w-[240px] h-[240px] border border-white/35 rounded-full" />
+
+            {/* Bottom-Right Corner Dense White Dot Cluster */}
+            <div className="absolute -bottom-4 -right-4 w-64 h-64 pointer-events-none opacity-80">
+              <div className="grid grid-cols-8 gap-2.5 transform -rotate-12">
+                {Array.from({ length: 64 }).map((_, i) => (
+                  <div key={i} className="w-2 h-2 rounded-full bg-white/90 shadow-xs" />
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         
-        {/* ─── 1. TOP FLOATING SOCIAL PROOF PILL BANNER ──────────────── */}
-        <div className="flex justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-3.5 px-6 py-2.5 rounded-full bg-white shadow-xl shadow-slate-200/60 border border-slate-100 text-xs sm:text-sm font-bold text-slate-800 relative"
-          >
-            <Heart className="w-4 h-4 text-[#A855F7] fill-[#A855F7]/20" />
-            
-            <span>
-              Trusted by <span className="text-[#A855F7] font-black">4,000+</span> Happy Families
-            </span>
-
-            {/* Overlapping Avatar Face Circles */}
-            <div className="flex items-center ml-1">
-              {avatars.map((img, idx) => (
-                <div
-                  key={idx}
-                  className="w-7 h-7 rounded-full border-2 border-white overflow-hidden shadow-sm -ml-2 first:ml-0"
-                >
-                  <img src={img} alt="Happy parent" className="w-full h-full object-cover" />
-                </div>
-              ))}
-              <div className="w-8 h-8 rounded-full bg-[#F3E8FF] text-[#A855F7] font-black text-[11px] flex items-center justify-center -ml-2 border-2 border-white shadow-sm">
-                +4K
-              </div>
-            </div>
-
-            {/* Sparkle dashes doodle top right */}
-            <span className="absolute -top-2 -right-2 text-purple-400 text-xs font-black">✨</span>
-          </motion.div>
-        </div>
-
-        {/* ─── 2. MAIN SECTION HEADER WITH DOODLES & UNDERLINE ────────── */}
+        {/* ─── MAIN SECTION HEADER WITH DOODLES & UNDERLINE ────────── */}
         <div className="relative text-center space-y-3 max-w-3xl mx-auto">
           
-          {/* Top Left Paper Airplane Doodle */}
-          <motion.div
-            animate={{ y: [-4, 6, -4], rotate: [-4, 4, -4] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -top-6 left-0 sm:-left-10 opacity-80 text-indigo-400 hidden sm:block pointer-events-none"
-          >
-            <div className="flex items-center gap-1">
-              <span className="text-xs border-t-2 border-dashed border-indigo-300 w-8 inline-block" />
-              <Send className="w-6 h-6 transform -rotate-12" />
-            </div>
-          </motion.div>
-
           {/* Doodles & Emojis */}
-          <div className="absolute top-10 -left-6 text-rose-400 text-xl pointer-events-none hidden sm:block">
+          <div className="absolute top-4 -left-4 text-amber-400 text-2xl pointer-events-none hidden sm:block">
             ⭐
           </div>
-          <div className="absolute -top-2 right-4 sm:-right-8 flex items-center gap-2 text-2xl pointer-events-none hidden sm:flex">
-            <span className="text-amber-400">⭐</span>
+          <div className="absolute -top-2 right-4 sm:-right-8 text-amber-400 text-2xl pointer-events-none hidden sm:block">
+            ⭐
           </div>
           <div className="absolute top-14 right-2 text-sky-400 text-3xl pointer-events-none hidden sm:block">
             📖
@@ -189,7 +188,9 @@ export const WhySkillSeedSection = () => {
 
           {/* Main Headline */}
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0F172A] tracking-tight leading-[1.15]">
-            Everything Your Child Needs to
+            Everything Your Child Needs
+            <br />
+            to
             <br />
             <span className="text-[#A855F7]">Learn, </span>
             <span className="text-[#22C55E]">Grow </span>
@@ -219,7 +220,7 @@ export const WhySkillSeedSection = () => {
           </p>
         </div>
 
-        {/* ─── 3. FEATURE CARDS GRID (6 CARDS IN 2 ROWS) ─────────────── */}
+        {/* ─── FEATURE CARDS GRID (6 CARDS IN 2 ROWS) ─────────────── */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {features.map((f, i) => (
             <motion.div
@@ -288,3 +289,5 @@ export const WhySkillSeedSection = () => {
 };
 
 export default WhySkillSeedSection;
+
+

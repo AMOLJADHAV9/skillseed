@@ -34,6 +34,7 @@ import { NotificationsPage } from './pages/NotificationsPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { ContactPage } from './pages/ContactPage';
 import { AboutPage } from './pages/AboutPage';
+import { MentorsPage } from './pages/MentorsPage';
 import { PricingPage } from './pages/PricingPage';
 import { BlogsPage } from './pages/BlogsPage';
 import { CareersPage } from './pages/CareersPage';
@@ -79,6 +80,7 @@ const AppInner = () => {
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/mentors" element={<MentorsPage />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/blogs" element={<BlogsPage />} />
           <Route path="/resources" element={<BlogsPage />} />

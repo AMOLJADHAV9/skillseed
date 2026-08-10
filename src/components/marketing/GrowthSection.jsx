@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { GrowthAreaChart } from '../charts/GrowthAreaChart';
 import { AnimatedCounter } from './GrowthSectionCounter';
 import {
-  TrendingUp,
   Users,
   Globe,
   Star,
@@ -11,7 +10,6 @@ import {
   ArrowRight,
   BarChart3,
   Calendar,
-  Send
 } from 'lucide-react';
 
 export const GrowthSection = () => {
@@ -23,10 +21,9 @@ export const GrowthSection = () => {
       label: 'Students Enrolled',
       desc: 'Active young learners worldwide',
       badge: 'LIVE METRIC',
-      badgeSymbol: '●',
-      iconBg: 'bg-purple-100 text-[#7C3AED]',
+      badgeSymbol: '•',
+      iconBg: 'bg-[#F3E8FF] text-[#7C3AED]',
       badgeBg: 'bg-[#F3E8FF] text-[#7C3AED]',
-      waveBg: 'bg-gradient-to-t from-purple-100/60 via-purple-50/20 to-transparent',
       buttonColor: 'text-[#7C3AED] hover:bg-[#7C3AED] hover:text-white border-purple-200',
     },
     {
@@ -36,10 +33,9 @@ export const GrowthSection = () => {
       label: 'Countries Reached',
       desc: 'Global learning community',
       badge: 'LIVE METRIC',
-      badgeSymbol: '●',
-      iconBg: 'bg-sky-100 text-[#0284C7]',
+      badgeSymbol: '•',
+      iconBg: 'bg-[#E0F2FE] text-[#0284C7]',
       badgeBg: 'bg-[#E0F2FE] text-[#0284C7]',
-      waveBg: 'bg-gradient-to-t from-sky-100/60 via-sky-50/20 to-transparent',
       buttonColor: 'text-[#0284C7] hover:bg-[#0284C7] hover:text-white border-sky-200',
     },
     {
@@ -49,11 +45,10 @@ export const GrowthSection = () => {
       label: 'Parent Satisfaction',
       desc: 'Top-rated phonics program',
       badge: 'LIVE METRIC',
-      badgeSymbol: '◆',
-      numberColor: 'text-[#D97706]',
-      iconBg: 'bg-amber-100 text-[#D97706]',
+      badgeSymbol: '•',
+      numberColor: 'text-[#EA580C]',
+      iconBg: 'bg-[#FEF3C7] text-[#D97706]',
       badgeBg: 'bg-[#FEF3C7] text-[#D97706]',
-      waveBg: 'bg-gradient-to-t from-amber-100/60 via-amber-50/20 to-transparent',
       buttonColor: 'text-[#D97706] hover:bg-[#D97706] hover:text-white border-amber-200',
     },
     {
@@ -63,89 +58,87 @@ export const GrowthSection = () => {
       label: 'Expert Educators',
       desc: 'Certified child specialists',
       badge: 'LIVE METRIC',
-      badgeSymbol: '●',
+      badgeSymbol: '•',
       numberColor: 'text-[#059669]',
-      iconBg: 'bg-emerald-100 text-[#059669]',
+      iconBg: 'bg-[#DCFCE7] text-[#059669]',
       badgeBg: 'bg-[#DCFCE7] text-[#059669]',
-      waveBg: 'bg-gradient-to-t from-emerald-100/60 via-emerald-50/20 to-transparent',
       buttonColor: 'text-[#059669] hover:bg-[#059669] hover:text-white border-emerald-200',
     },
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-[#FAFBFF] relative overflow-hidden text-slate-900 font-sans">
+    <section className="py-16 lg:py-24 bg-[#F8F9FE] relative overflow-hidden text-slate-900 font-sans">
       
-      {/* Ambient background lighting */}
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute top-1/4 -right-32 w-96 h-96 bg-purple-100/60 rounded-full blur-[140px]" />
-        <div className="absolute bottom-10 -left-32 w-96 h-96 bg-sky-100/60 rounded-full blur-[140px]" />
+      {/* ─── LEFT SIDE BACKGROUND DECORATIONS ───────────────────────────── */}
+      {/* 5x6 Purple Dot Matrix (Top Left) */}
+      <div className="absolute top-6 left-6 grid grid-cols-5 gap-2 opacity-35 pointer-events-none z-0">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <div key={i} className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+        ))}
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
-        
-        {/* ─── SECTION HEADER WITH DOODLES & UNDERLINE ───────────────── */}
-        <div className="relative text-center space-y-4 max-w-3xl mx-auto">
+      {/* Outlined Triangle (Mid Left) */}
+      <div className="absolute top-1/4 left-8 text-purple-300 pointer-events-none hidden sm:block z-0">
+        <svg className="w-8 h-8 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polygon points="12,2 22,22 2,22" />
+        </svg>
+      </div>
+
+      {/* Outlined Circles (Left Side) */}
+      <div className="absolute top-1/2 left-6 w-12 h-12 border-2 border-purple-300/40 rounded-full pointer-events-none hidden sm:block z-0" />
+      <div className="absolute bottom-1/4 left-12 w-6 h-6 border-2 border-purple-300/30 rounded-full pointer-events-none hidden sm:block z-0" />
+      <div className="absolute bottom-8 left-6 w-5 h-5 border-2 border-purple-300/40 rounded-full pointer-events-none z-0" />
+
+
+      {/* ─── RIGHT SIDE LIME GREEN CURVED BACKGROUND SHAPE ────── */}
+      <div className="absolute top-0 right-0 bottom-0 w-1/3 max-w-[440px] hidden xl:block pointer-events-none overflow-hidden z-0">
+        {/* Curved Green Background Shape */}
+        <div className="absolute inset-0 bg-[#bef264] rounded-l-[180px] opacity-95">
           
-          {/* Top Left Paper Airplane Doodle */}
-          <motion.div
-            animate={{ y: [-4, 6, -4], rotate: [-4, 4, -4] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -top-6 left-2 sm:-left-12 opacity-80 text-indigo-400 hidden sm:block pointer-events-none"
-          >
-            <div className="flex items-center gap-1">
-              <span className="text-xs border-t-2 border-dashed border-indigo-300 w-8 inline-block" />
-              <Send className="w-6 h-6 transform -rotate-12" />
-            </div>
-          </motion.div>
+          {/* Concentric Radar Rings */}
+          <div className="absolute top-1/2 right-[-20%] -translate-y-1/2 w-[360px] h-[360px] border border-white/35 rounded-full pointer-events-none" />
+          <div className="absolute top-1/2 right-[-20%] -translate-y-1/2 w-[280px] h-[280px] border border-white/35 rounded-full pointer-events-none" />
+          <div className="absolute top-1/2 right-[-20%] -translate-y-1/2 w-[200px] h-[200px] border border-white/35 rounded-full pointer-events-none" />
 
-          {/* Doodles Right */}
-          <div className="absolute -top-4 right-0 sm:-right-8 flex items-center gap-3 text-2xl pointer-events-none hidden sm:flex">
-            <span className="animate-pulse">🌸</span>
-            <span className="text-sky-400">✦</span>
-          </div>
-          
-          <div className="absolute top-12 left-8 text-amber-400 text-xl pointer-events-none hidden sm:block animate-bounce">
-            ⭐
+          {/* Paper Airplane with Dashed Trajectory */}
+          <div className="absolute top-12 right-12 opacity-85">
+            <svg className="w-20 h-20 text-white" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M10,80 Q50,20 85,15" strokeDasharray="4 4" />
+              <polygon points="85,15 65,30 72,40" fill="white" />
+            </svg>
           </div>
 
-          {/* Badge Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F3E8FF] border border-[#E9D5FF] text-[#9333EA] shadow-sm">
-            <TrendingUp className="w-4 h-4 text-[#9333EA]" />
-            <span className="text-xs font-black tracking-wider uppercase">
-              PROVEN GROWTH &amp; IMPACT
-            </span>
+          {/* Floating Geometric Outlines */}
+          <div className="absolute top-28 right-8 w-6 h-6 border-2 border-white/70 transform rotate-12" />
+          <div className="absolute top-48 right-36 w-5 h-5 border-2 border-white/70 rounded-full" />
+          <div className="absolute top-64 right-10 w-4 h-4 border-2 border-white/60 transform rotate-45" />
+
+          {/* Striped Patterned Circle at Bottom Right */}
+          <div className="absolute bottom-16 right-6 w-20 h-20 rounded-full border-2 border-white/40 overflow-hidden opacity-50">
+            <div className="w-full h-full bg-[repeating-linear-gradient(45deg,white,white_2px,transparent_2px,transparent_8px)]" />
           </div>
 
-          {/* Main Headline */}
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0F172A] tracking-tight leading-[1.15]">
-            Empowering Young Minds{' '}
-            <span className="relative inline-block text-[#7C3AED]">
-              Worldwide
-              {/* Yellow Brush Underline */}
-              <svg
-                className="absolute -bottom-2 left-0 w-full h-3 text-amber-400 pointer-events-none"
-                viewBox="0 0 120 18"
-                fill="none"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M 3 14 C 35 4, 85 4, 117 14"
-                  stroke="currentColor"
-                  strokeWidth="5"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-          </h2>
-
-          {/* Subtitle */}
-          <p className="text-sm sm:text-base text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
-            See how our interactive learning methodology translates into real student progress and global adoption over time.
-          </p>
+          {/* Dot Grid at Bottom Right */}
+          <div className="absolute bottom-6 right-8 grid grid-cols-4 gap-2 opacity-50">
+            {Array.from({ length: 16 }).map((_, i) => (
+              <div key={i} className="w-1.5 h-1.5 rounded-full bg-white" />
+            ))}
+          </div>
         </div>
+      </div>
 
+      {/* Floating "Book Demo ⭐" Badge on Right Edge */}
+      <div className="absolute right-6 top-1/2 -translate-y-1/2 z-30 hidden xl:flex flex-col items-center justify-center bg-white rounded-2xl px-4 py-3 shadow-xl border border-slate-100/80 hover:scale-105 transition-transform cursor-pointer">
+        <span className="text-xs font-black text-indigo-900 tracking-tight">Book Demo</span>
+        <span className="text-sm mt-0.5">⭐</span>
+      </div>
+
+
+      {/* ─── MAIN CONTENT CONTAINER ───────────────────────────────────── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
+        
         {/* ─── TOP 4 METRIC CARDS GRID ────────────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {stats.map((item, idx) => {
             const Icon = item.icon;
             return (
@@ -154,37 +147,35 @@ export const GrowthSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.4 }}
-                whileHover={{ y: -5 }}
-                className="group relative bg-white rounded-[28px] p-6 border border-slate-100 shadow-xl shadow-slate-100/70 overflow-hidden flex flex-col justify-between h-[215px] transition-all cursor-pointer"
+                transition={{ delay: idx * 0.08, duration: 0.4 }}
+                whileHover={{ y: -4 }}
+                className="group bg-white rounded-[24px] p-6 border border-slate-100 shadow-md shadow-slate-200/40 flex flex-col justify-between h-[200px] transition-all cursor-pointer relative overflow-hidden"
               >
                 {/* Top Row: Icon & Live Metric Pill */}
-                <div className="flex items-center justify-between relative z-10">
-                  <div className={`w-12 h-12 rounded-2xl ${item.iconBg} flex items-center justify-center shadow-sm font-bold text-xl group-hover:scale-110 transition-transform`}>
-                    <Icon className="w-6 h-6" strokeWidth={2.2} />
+                <div className="flex items-center justify-between">
+                  <div className={`w-11 h-11 rounded-2xl ${item.iconBg} flex items-center justify-center font-bold text-lg group-hover:scale-105 transition-transform`}>
+                    <Icon className="w-5 h-5" strokeWidth={2.3} />
                   </div>
                   
-                  <span className={`inline-flex items-center gap-1 text-[10px] font-black tracking-wider uppercase px-3 py-1 rounded-full ${item.badgeBg} shadow-xs`}>
+                  <span className={`inline-flex items-center gap-1 text-[10px] font-black tracking-wider uppercase px-2.5 py-1 rounded-full ${item.badgeBg}`}>
                     <span className="text-[8px]">{item.badgeSymbol}</span>
                     <span>{item.badge}</span>
                   </span>
                 </div>
 
-                {/* Middle Body: Value, Title & Subtitle */}
-                <div className="relative z-10 my-auto">
-                  <div className={`text-3xl sm:text-4xl font-black ${item.numberColor || 'text-slate-900'} tracking-tight leading-none`}>
-                    <AnimatedCounter value={item.value} duration={2.2} />
+                {/* Body Content */}
+                <div className="my-auto">
+                  <div className={`text-3xl font-black ${item.numberColor || 'text-slate-900'} tracking-tight leading-none`}>
+                    <AnimatedCounter value={item.value} duration={2.0} />
                   </div>
-                  <div className="text-sm font-bold text-slate-900 mt-2">{item.label}</div>
+                  <div className="text-sm font-black text-slate-900 mt-2">{item.label}</div>
                   <div className="text-xs font-semibold text-slate-400 mt-0.5">{item.desc}</div>
                 </div>
 
-                {/* Bottom Row: Wave Gradient Tint & Action Button */}
-                <div className={`absolute inset-x-0 bottom-0 h-24 ${item.waveBg} pointer-events-none z-0 rounded-b-[28px]`} />
-
-                <div className="relative z-10 flex justify-end">
-                  <div className={`w-8 h-8 rounded-full bg-white border ${item.buttonColor} shadow-md flex items-center justify-center transition-all`}>
-                    <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                {/* Bottom Arrow Button */}
+                <div className="flex justify-end">
+                  <div className={`w-7 h-7 rounded-full bg-white border ${item.buttonColor} shadow-xs flex items-center justify-center transition-all`}>
+                    <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
                   </div>
                 </div>
               </motion.div>
@@ -198,16 +189,16 @@ export const GrowthSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="bg-white rounded-[32px] p-6 sm:p-8 border border-slate-100 shadow-xl shadow-slate-100/80 relative overflow-hidden"
+          className="bg-white rounded-[32px] p-6 sm:p-8 border border-slate-100 shadow-xl shadow-slate-200/50 relative overflow-hidden"
         >
           {/* Header Inside Card */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-xl flex-shrink-0 shadow-sm">
-                <BarChart3 className="w-6 h-6" />
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-5 border-b border-slate-100">
+            <div className="flex items-start gap-3.5">
+              <div className="w-11 h-11 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center font-bold flex-shrink-0 shadow-xs">
+                <BarChart3 className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-lg sm:text-xl font-black text-slate-900">
+                <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">
                   Student Enrollment &amp; Milestone Progression
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
@@ -218,8 +209,8 @@ export const GrowthSection = () => {
 
             {/* Dropdown Pill Button */}
             <div className="self-start md:self-auto">
-              <button className="px-4 py-2 rounded-full bg-purple-50 border border-purple-200 text-[#7C3AED] text-xs font-black flex items-center gap-2 shadow-sm hover:bg-purple-100 transition cursor-pointer">
-                <Calendar className="w-4 h-4" />
+              <button className="px-3.5 py-1.5 rounded-full bg-[#F3E8FF]/70 border border-[#E9D5FF] text-[#7C3AED] text-xs font-black flex items-center gap-2 shadow-xs hover:bg-[#F3E8FF] transition cursor-pointer">
+                <Calendar className="w-3.5 h-3.5" />
                 <span>2024 Growth Trajectory</span>
                 <span className="text-[10px]">▼</span>
               </button>
@@ -237,3 +228,4 @@ export const GrowthSection = () => {
 };
 
 export default GrowthSection;
+

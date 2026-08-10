@@ -25,7 +25,7 @@ export const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Courses', path: '/courses', hasDropdown: true },
-    { name: 'Mentors', path: '/about' },
+    { name: 'Mentors', path: '/mentors' },
     { name: 'Community', path: '/games' },
     { name: 'About Us', path: '/about' },
   ];

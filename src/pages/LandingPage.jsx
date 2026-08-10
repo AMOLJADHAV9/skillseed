@@ -6,6 +6,7 @@ import { GrowthSection } from '../components/marketing/GrowthSection';
 import { HeroCarousel } from '../components/marketing/HeroCarousel';
 import { SkillSeedHero } from '../components/marketing/SkillSeedHero';
 import { KidsPhotoGallery } from '../components/marketing/KidsPhotoGallery';
+import { WhyPhonicsSection } from '../components/marketing/WhyPhonicsSection';
 import { WhySkillSeedSection } from '../components/marketing/WhySkillSeedSection';
 import { PopularProgramsSection } from '../components/marketing/PopularProgramsSection';
 import { HowItWorksSection } from '../components/marketing/HowItWorksSection';
@@ -157,6 +158,9 @@ export const LandingPage = () => {
 
       {/* ─── KIDS PHOTO GALLERY GRID (NEW) ────────────── */}
       <KidsPhotoGallery />
+
+      {/* ─── WHY CHOOSE OUR PHONICS CLASSES SECTION ────── */}
+      <WhyPhonicsSection />
 
       {/* ─── GROWTH & ANIMATED STATS COUNTER SECTION ────── */}
       <GrowthSection />
