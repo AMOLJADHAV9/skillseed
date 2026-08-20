@@ -351,83 +351,19 @@ export const SkillSeedHero = () => {
               💡
             </motion.div>
 
-            {/* Golden 3D Winding Path SVG (Edge-to-Edge with Anchored 3D Boy) */}
-            <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
-              <svg viewBox="0 0 800 700" className="w-full h-full overflow-visible" fill="none">
-                
-                {/* 3D Path Shadow & Thickness Base */}
-                <path
-                  d="M 270 610 C 350 570, 530 550, 570 450 C 610 340, 490 280, 540 200 C 590 120, 640 100, 660 70"
-                  stroke="#D97706"
-                  strokeWidth="82"
-                  strokeLinecap="round"
-                  fill="none"
-                  transform="translate(0, 14)"
-                  opacity="0.6"
-                />
-
-                {/* Main Vibrant Golden Yellow Path */}
-                <path
-                  d="M 270 610 C 350 570, 530 550, 570 450 C 610 340, 490 280, 540 200 C 590 120, 640 100, 660 70"
-                  stroke="url(#roadGrad)"
-                  strokeWidth="76"
-                  strokeLinecap="round"
-                  fill="none"
-                />
-
-                {/* Path Dotted Center Line */}
-                <path
-                  d="M 270 610 C 350 570, 530 550, 570 450 C 610 340, 490 280, 540 200 C 590 120, 640 100, 660 70"
-                  stroke="#FEF08A"
-                  strokeWidth="4"
-                  strokeDasharray="16 14"
-                  strokeLinecap="round"
-                  fill="none"
-                  opacity="0.9"
-                />
-
-                {/* Animated Glowing Sparkle Trail from Boy along the Path */}
-                <g opacity="0.85">
-                  <circle cx="315" cy="580" r="5" fill="#FFFFFF" className="animate-pulse" />
-                  <circle cx="365" cy="558" r="4" fill="#FEF08A" />
-                  <circle cx="415" cy="530" r="4.5" fill="#FFFFFF" className="animate-pulse" />
-                  <circle cx="465" cy="495" r="4" fill="#FEF08A" />
-                  <circle cx="515" cy="455" r="5" fill="#FFFFFF" className="animate-pulse" />
-                </g>
-
-                {/* 3D Yellow Pedestal Disk at Start of Path */}
-                <ellipse cx="270" cy="610" rx="145" ry="42" fill="#D97706" />
-                <ellipse cx="270" cy="604" rx="140" ry="38" fill="#F59E0B" />
-                <ellipse cx="270" cy="598" rx="134" ry="34" fill="#FACC15" />
-                <ellipse cx="270" cy="592" rx="126" ry="30" fill="#FEF08A" opacity="0.8" />
-
-                {/* Grounding Soft Shadow directly under Boy's feet on Yellow Platform */}
-                <ellipse cx="290" cy="603" rx="46" ry="11" fill="#78350F" opacity="0.45" className="blur-[1px]" />
-                <ellipse cx="290" cy="603" rx="30" ry="6" fill="#451A03" opacity="0.65" />
-
-                {/* Prominent 3D Boy Character Standing Directly on Yellow Starting Platform */}
-                <motion.image
-                  href="/assets/skillseed-3d-boy.png"
-                  x="210"
-                  y="190"
-                  width="340"
-                  height="440"
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.15 }}
-                  className="pointer-events-none drop-shadow-2xl"
-                />
-
-                <defs>
-                  <linearGradient id="roadGrad" x1="0" y1="1" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#F59E0B" />
-                    <stop offset="45%" stopColor="#FBBF24" />
-                    <stop offset="80%" stopColor="#FACC15" />
-                    <stop offset="100%" stopColor="#FEF08A" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
+            {/* 3D Journey Artwork Image (Adjusted scale & position so full yellow path is visible above blue section) */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none z-10"
+            >
+              <img
+                src="/images/boy_journey-removebg-preview.png"
+                alt="SkillSeed 3D Boy Explorer Journey"
+                className="w-full h-full object-contain scale-100 sm:scale-105 lg:scale-110 transform -translate-y-4 sm:-translate-y-6 lg:-translate-y-8 filter drop-shadow-2xl"
+              />
+            </motion.div>
 
             {/* Floating Avatar Cards directly on canvas (Matching Image 1) */}
             {avatars.map((avatar, idx) => (
@@ -450,12 +386,12 @@ export const SkillSeedHero = () => {
               </motion.div>
             ))}
 
-            {/* Speech Callout Bubble (Positioned directly near Boy's Pedestal) */}
+            {/* Speech Callout Bubble (Positioned directly near Boy's Pedestal, adjusted above blue wave) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.5, type: 'spring' }}
-              className="absolute bottom-[2%] left-4 sm:left-[5%] bg-white/95 backdrop-blur-md rounded-3xl px-3.5 py-2.5 sm:px-4 sm:py-3 shadow-2xl border border-slate-100 max-w-[190px] sm:max-w-[210px] z-30 flex items-center gap-2"
+              className="absolute bottom-[10%] sm:bottom-[12%] left-4 sm:left-[5%] bg-white/95 backdrop-blur-md rounded-3xl px-3.5 py-2.5 sm:px-4 sm:py-3 shadow-2xl border border-slate-100 max-w-[190px] sm:max-w-[210px] z-30 flex items-center gap-2"
             >
               <div className="text-lg sm:text-xl flex-shrink-0">🚀</div>
               <p className="text-[11px] sm:text-xs font-black text-slate-900 leading-tight">
@@ -474,7 +410,7 @@ export const SkillSeedHero = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="hidden sm:block absolute bottom-[4%] right-[2%] sm:right-[5%] w-28 h-28 sm:w-36 sm:h-36 z-30 pointer-events-none drop-shadow-xl"
+              className="hidden sm:block absolute bottom-[10%] sm:bottom-[12%] right-[2%] sm:right-[5%] w-28 h-28 sm:w-36 sm:h-36 z-30 pointer-events-none drop-shadow-xl"
             >
               <DotLottieReact
                 src="https://lottie.host/cdd17168-019b-4c46-8fda-a1fb53cbf51f/EgUQYZlEdW.lottie"
